@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>단단 문법</title>
+<meta name="description" content="배운 만큼만 쓰는 문장으로, 한 단씩 단단해지는 중학 영문법">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f8f8; --surface:#ffffff; --surface-2:#eef4f4;
+  --fg:#1f2937; --muted:#64708a; --line:#dbe3e6;
+  --heading:#16204a;
+  --accent:#0ea5a4; --accent-strong:#0b8786; --accent-soft:#e0f4f3; --accent-ink:#0a6c6b;
+  --cover-1:#5ec4c2; --cover-2:#0ea5a4; --cover-3:#16204a;
+  --pending:#9aa3b2; --pending-bg:#f0f2f5;
+  --shadow:0 1px 2px rgba(22,32,74,.06),0 10px 28px rgba(22,32,74,.07);
+  --font:"Noto Sans KR",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f151c; --surface:#171f29; --surface-2:#1d2733;
+    --fg:#e4e9f0; --muted:#98a4b6; --line:#2a3542;
+    --heading:#e3e9ff;
+    --accent:#2fc4c1; --accent-strong:#5ad6d2; --accent-soft:#143634; --accent-ink:#8ce4e0;
+    --cover-1:#3fa9a7; --cover-2:#1a8c8b; --cover-3:#2a3a7a;
+    --pending:#73808f; --pending-bg:#1b232d;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.25);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f151c; --surface:#171f29; --surface-2:#1d2733;
+  --fg:#e4e9f0; --muted:#98a4b6; --line:#2a3542;
+  --heading:#e3e9ff;
+  --accent:#2fc4c1; --accent-strong:#5ad6d2; --accent-soft:#143634; --accent-ink:#8ce4e0;
+  --cover-1:#3fa9a7; --cover-2:#1a8c8b; --cover-3:#2a3a7a;
+  --pending:#73808f; --pending-bg:#1b232d;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+h1,h2,h3,h4{color:var(--heading);line-height:1.3;margin:0;text-wrap:balance;font-weight:700}
+p{margin:0}
+a{color:var(--accent-ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* 위 고정 내비 */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--heading);text-decoration:none;white-space:nowrap;font-size:17px}
+.brand i{display:inline-block;width:12px;height:18px;border-radius:2px 4px 4px 2px;background:linear-gradient(90deg,var(--accent-strong) 0 30%,var(--accent) 30%)}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 10px;border-radius:8px;white-space:nowrap}
+.nav a:hover{color:var(--accent-ink);background:var(--accent-soft)}
+
+/* 머리 */
+.hero{background:linear-gradient(180deg,var(--accent-soft),var(--bg));border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center;padding-block:56px 48px}
+.eyebrow{display:inline-block;color:var(--accent-ink);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(36px,6vw,56px);letter-spacing:-.02em;line-height:1.1}
+.tagline{font-size:clamp(17px,2.2vw,21px);color:var(--fg);margin-top:16px;font-weight:500}
+.lead{color:var(--muted);margin-top:12px;max-width:34em}
+.stats{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.stat{display:flex;flex-direction:column;min-width:0}
+.stat b{font-size:24px;color:var(--heading);font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:13px;color:var(--muted)}
+.covers{display:flex;gap:14px;align-items:flex-end}
+.cover{position:relative;width:118px;aspect-ratio:3/4.2;max-width:100%;border-radius:3px 9px 9px 3px;color:#fff;padding:14px 12px 12px 18px;display:flex;flex-direction:column;box-shadow:var(--shadow);background:var(--cover-2)}
+.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:rgba(0,0,0,.18);border-radius:3px 0 0 3px}
+.cover::after{content:"";position:absolute;right:0;top:0;bottom:0;width:2px;background:rgba(255,255,255,.35)}
+.cover.l1{background:var(--cover-1);transform:translateY(16px) rotate(-2deg)}
+.cover.l2{background:var(--cover-2)}
+.cover.l3{background:var(--cover-3);transform:translateY(16px) rotate(2deg)}
+.cover small{font-size:11px;opacity:.9;letter-spacing:.02em}
+.cover b{font-size:30px;line-height:1.1;margin-top:auto}
+.cover em{font-style:normal;font-size:11px;opacity:.9;margin-top:4px}
+
+/* 본문 */
+section{padding-block:56px}
+section + section{border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(24px,3.4vw,32px);letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
+.sec-head h2::before{content:"";width:6px;height:24px;border-radius:3px;background:var(--accent);flex:none}
+.sec-head p{color:var(--muted);max-width:44em}
+h3{font-size:20px;margin-bottom:14px}
+.note{color:var(--muted);font-size:14px}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:13px;font-weight:700;color:var(--muted);background:var(--surface-2);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.table-wrap th:first-child,.table-wrap td:first-child{position:sticky;left:0;z-index:1;background:var(--surface);box-shadow:inset -1px 0 0 var(--line)}
+.table-wrap th:first-child{background:var(--surface-2)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.ch{white-space:nowrap}
+td.ch b{color:var(--heading);font-weight:700}
+td.ch .no{display:inline-block;min-width:2.2em;color:var(--accent-ink);font-weight:700;font-variant-numeric:tabular-nums}
+.books-table{min-width:520px}
+.files-table{min-width:600px}
+.files-table th:first-child{width:38%}
+.book-name{font-weight:700;color:var(--heading)}
+
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.feature .n{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:14px;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.feature h3{font-size:17px;margin:0}
+.feature p{color:var(--muted);font-size:14.5px}
+
+/* 한 장의 흐름 */
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.flow > li{display:flex;align-items:center;gap:10px;min-width:0}
+.flow > li + li::before{content:"→";color:var(--accent);font-weight:700;flex:none}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-weight:500;white-space:nowrap;color:var(--heading)}
+.flow-group{background:var(--accent-soft);border:1px dashed var(--accent);border-radius:12px;padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.flow-group .lbl{font-size:12px;font-weight:700;color:var(--accent-ink);letter-spacing:.04em}
+.flow-group ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.flow-group ol li{display:flex;align-items:center;gap:8px}
+.flow-group ol li + li::before{content:"·";color:var(--accent-ink);font-weight:700}
+.flow-group .step{padding:6px 10px;font-size:14px}
+
+/* 탭 */
+.tablist{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;font-size:15px;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;min-height:44px;touch-action:manipulation}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab:hover:not([aria-selected="true"]){color:var(--accent-ink);border-color:var(--accent)}
+.toc-vol{margin:22px 0 10px;font-size:16px;color:var(--heading)}.toc-vol:first-child{margin-top:4px}.toc-vol span{color:var(--muted);font-weight:500;font-size:13.5px;margin-left:6px}
+.toc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.toc li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;min-width:0}
+.toc .no{font-size:22px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.2;grid-row:span 2}
+.toc .name{font-weight:700;color:var(--heading);font-size:16px}
+.toc .pts{color:var(--muted);font-size:13.5px;line-height:1.55}
+
+/* 맛보기 */
+.samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sample{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:6px;min-width:0;box-shadow:var(--shadow)}
+.sample .lv{font-size:13px;font-weight:700;color:var(--accent-ink)}
+.sample h3{font-size:19px;margin:0}
+.sample .pts{color:var(--muted);font-size:14px;margin-bottom:10px}
+.sample .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+
+/* 내려받기 링크 */
+.dl{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap;line-height:1.3}
+.dl:hover{background:var(--accent);color:#fff}
+.dl .size{font-weight:500;opacity:.8;font-size:12.5px;font-variant-numeric:tabular-nums}
+.dl.big{padding:10px 16px;font-size:15px}
+.pending{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--pending-bg);color:var(--pending);font-size:13.5px;white-space:nowrap}
+.book-files{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:12px 0 40px;padding:12px 16px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px}
+.book-files .lbl{font-weight:700;color:var(--heading);font-size:14px}
+.book-files .item{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.common{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;box-shadow:var(--shadow)}
+.common .txt{min-width:0;flex:1 1 18em}
+.common h3{margin:0 0 4px}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+
+@media (max-width:860px){
+  .features{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .samples{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:40px 36px}
+  .covers{justify-content:flex-start;padding-bottom:16px}
+  .cover{width:min(118px,28vw)}
+  .cover b{font-size:24px}
+  .toc{grid-template-columns:1fr}
+  section{padding-block:44px}
+  .flow{flex-direction:column;align-items:stretch}
+  .flow > li{flex-direction:column;align-items:stretch;gap:6px}
+  .flow > li + li::before{content:"↓";text-align:center}
+  .step{white-space:normal;text-align:center}
+  .flow-group ol{flex-direction:column;align-items:stretch}
+  .flow-group ol li + li::before{content:none}
+}
+@media (max-width:560px){
+  .features{grid-template-columns:1fr}
+  .top .wrap{flex-wrap:wrap;height:auto;min-height:56px;padding-block:6px;gap:0 10px}
+  .nav a{padding:8px}
+  html{scroll-padding-top:100px}
+  th,td{padding:10px 12px}
+}
+</style>
+<noscript><style>.tabpanel[hidden]{display:block!important}.tablist{display:none}</style></noscript>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><i aria-hidden="true"></i>단단 문법</a>
+  <nav class="nav" aria-label="차례"><a href="#intro">책 소개</a><a href="#toc">차례</a><a href="#sample">맛보기</a><a href="#files">자료실</a></nav>
+</div></header>
+<div class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="eyebrow">예비중 ~ 중3 영문법 · 3학년 × 상·하권 · 36장</span>
+    <h1>단단 문법</h1>
+    <p class="tagline">배운 만큼만 쓰는 문장으로, 한 단씩 단단해지는 중학 영문법</p>
+    <p class="lead">학년마다 같은 문법을 한 단계씩 더 깊게 배우는 나선형 구성. 학생용 교재와 정답·해설 별책, 교사용, 강의용 슬라이드, 워크북까지 한 벌로 갖췄습니다.</p>
+    <div class="stats">
+      <div class="stat"><b>6권</b><span>중1 상·하 · 중2 상·하 · 중3 상·하</span></div>
+      <div class="stat"><b>36장</b><span>학년마다 12장</span></div>
+      <div class="stat"><b>108</b><span>문법 포인트</span></div>
+      <div class="stat"><b>1,080</b><span>핵심 문장</span></div>
+    </div>
+  </div>
+  <div class="covers" aria-hidden="true"><div class="cover l1"><small>단단 문법</small><b>중1</b><em>상·하 · 예비중~중1</em></div><div class="cover l2"><small>단단 문법</small><b>중2</b><em>상·하 · 중2</em></div><div class="cover l3"><small>단단 문법</small><b>중3</b><em>상·하 · 중3</em></div>
+  </div>
+</div></div>
+<main>
+
+<section id="intro"><div class="wrap">
+  <div class="sec-head"><h2>책 소개</h2><p>세 학년이 같은 틀로 이어집니다. 중1에서 기초를 놓고, 중2·중3에서 같은 문법을 더 깊게 다시 만납니다. 학년마다 상·하 두 권(한 학기에 한 권), 정답·해설은 별책입니다.</p></div>
+  <div class="table-wrap"><table class="books-table">
+    <thead><tr><th>권</th><th>대상</th><th class="num">장</th><th class="num">포인트</th><th class="num">핵심 문장</th></tr></thead>
+    <tbody><tr><td class="book-name">단단 문법 중1 상</td><td>예비중~중1</td><td class="num">1~6장</td><td class="num">22</td><td class="num">220</td></tr><tr><td class="book-name">단단 문법 중1 하</td><td>예비중~중1</td><td class="num">7~12장</td><td class="num">20</td><td class="num">200</td></tr><tr><td class="book-name">단단 문법 중2 상</td><td>중2</td><td class="num">1~6장</td><td class="num">12</td><td class="num">120</td></tr><tr><td class="book-name">단단 문법 중2 하</td><td>중2</td><td class="num">7~12장</td><td class="num">18</td><td class="num">180</td></tr><tr><td class="book-name">단단 문법 중3 상</td><td>중3</td><td class="num">1~6장</td><td class="num">15</td><td class="num">150</td></tr><tr><td class="book-name">단단 문법 중3 하</td><td>중3</td><td class="num">7~12장</td><td class="num">21</td><td class="num">210</td></tr></tbody>
+  </table></div>
+  <div class="features"><div class="feature"><span class="n">1</span><h3>그 진도까지 배운 문법만으로 쓴 문장</h3><p>모든 문장을 그 장까지 배운 문법과 쉬운 단어로만 새로 썼습니다. 모르는 말에 막히지 않으니 아이들이 부담 없이 읽고, 읽은 문장이 그대로 쓸 수 있는 문장이 됩니다.</p></div><div class="feature"><span class="n">2</span><h3>장마다 “이 장의 단어”를 먼저 보고 시작</h3><p>장 표지 다음 쪽에서 그 장에 정말 나오는 단어를 먼저 봅니다. 앞 장과 겹치지 않는 단어 12~30개, 품사와 뜻, 따라 쓰는 줄.</p></div><div class="feature"><span class="n">3</span><h3>개념 정리 → 핵심 문장 10 → 단계별 문제 → 서술형</h3><p>포인트마다 같은 순서로 익힙니다. 개념 정리 2쪽, 핵심 문장 10개(해석·빈칸·영작), 기본·실력·심화 문제, 서술형 다지기.</p></div><div class="feature"><span class="n">4</span><h3>누적 복습과 실전 테스트</h3><p>장 끝에서 앞 장 내용을 섞어 다시 풀고, 실전 테스트로 마무리합니다. 배운 것이 뒤로 갈수록 쌓입니다.</p></div><div class="feature"><span class="n">5</span><h3>교사용과 강의용 슬라이드</h3><p>교사용에는 포인트마다 지도 포인트(목표·수업 흐름·판서할 것·자주 하는 실수)와 문제마다 정답 해설. 강의용 슬라이드는 전자칠판·온라인 수업에 바로 띄웁니다.</p></div><div class="feature"><span class="n">6</span><h3>워크북·테스트지</h3><p>교재와 같은 수준의 문장으로 만든 워크북과 테스트지로 한 번 더 다집니다.</p></div>
+  </div>
+</div></section>
+
+<section id="flow"><div class="wrap">
+  <div class="sec-head"><h2>한 장의 흐름</h2><p>36장 모두 같은 순서로 갑니다. 가운데 묶음은 포인트마다 되풀이됩니다.</p></div>
+  <ol class="flow">
+    <li><span class="step">장 표지</span></li><li><span class="step">이 장의 단어</span></li><li><span class="step">미리 풀어보기</span></li>
+    <li><div class="flow-group"><span class="lbl">포인트마다</span><ol><li><span class="step">개념 정리 2쪽</span></li><li><span class="step">핵심 문장 10</span></li><li><span class="step">빈칸</span></li><li><span class="step">영작</span></li><li><span class="step">단계별 문제 10</span></li><li><span class="step">서술형 3</span></li></ol></div></li>
+    <li><span class="step">누적 복습</span></li><li><span class="step">실전 테스트</span></li><li><span class="step">말하기·쓰기 미션</span></li>
+  </ol>
+</div></section>
+
+<section id="toc"><div class="wrap">
+  <div class="sec-head"><h2>차례</h2><p>학년을 고르면 상·하 두 권의 장과 장마다 들어 있는 포인트가 보입니다.</p></div>
+  <div class="tabs"><div class="tablist" role="tablist" aria-label="권"><button class="tab" role="tab" id="toc-tab-1" aria-controls="toc-panel-1" aria-selected="true" tabindex="0">중1</button><button class="tab" role="tab" id="toc-tab-2" aria-controls="toc-panel-2" aria-selected="false" tabindex="-1">중2</button><button class="tab" role="tab" id="toc-tab-3" aria-controls="toc-panel-3" aria-selected="false" tabindex="-1">중3</button></div><div class="tabpanel" role="tabpanel" id="toc-panel-1" aria-labelledby="toc-tab-1"><h4 class="toc-vol">단단 문법 중1 상 <span>1~6장</span></h4><ol class="toc"><li><span class="no">01</span><span class="name">be동사</span><span class="pts">be동사의 현재형 (am, are, is) · be동사 현재형의 부정문과 의문문 · be동사의 과거형 (was, were) · be동사 과거형의 부정문과 의문문 · There is / There are</span></li><li><span class="no">02</span><span class="name">일반동사</span><span class="pts">일반동사의 현재형 (3인칭 단수 -s) · 일반동사 현재형의 부정문과 의문문 (do, does) · 일반동사의 과거형 (규칙·불규칙) · 일반동사 과거형의 부정문과 의문문 (did)</span></li><li><span class="no">03</span><span class="name">시제 — 진행형과 미래</span><span class="pts">현재 시제 · 과거 시제 · 현재진행형 · 과거진행형 · 미래 시제 (will, be going to)</span></li><li><span class="no">04</span><span class="name">조동사</span><span class="pts">can, be able to · may · must, have to · should</span></li><li><span class="no">05</span><span class="name">명사와 관사</span><span class="pts">셀 수 있는 명사와 셀 수 없는 명사 · 관사 a, an, the</span></li><li><span class="no">06</span><span class="name">대명사</span><span class="pts">인칭대명사의 격 (주격·소유격·목적격·소유대명사) · this, that, it</span></li></ol><h4 class="toc-vol">단단 문법 중1 하 <span>7~12장</span></h4><ol class="toc"><li><span class="no">07</span><span class="name">형용사·부사·비교</span><span class="pts">형용사의 쓰임과 수량 형용사 · 부사의 형태와 위치 (빈도부사 포함) · 비교급·최상급 만들기 (-er/-est, more/most)</span></li><li><span class="no">08</span><span class="name">문장의 종류</span><span class="pts">의문사 의문문 · 명령문 (Let&#39;s, 명령문+and/or) · 감탄문 (What, How)</span></li><li><span class="no">09</span><span class="name">문장의 형식</span><span class="pts">1형식과 2형식 (주어+동사, 주어+동사+보어) · 감각동사 + 형용사 · 3형식 (주어+동사+목적어) · 4형식과 3형식 전환 (간접목적어+직접목적어)</span></li><li><span class="no">10</span><span class="name">to부정사와 동명사 기초</span><span class="pts">to부정사 기초 (~하는 것, 의문사 + to, ~하기 위해) · 동명사 기초 (enjoy -ing, 동명사 주어)</span></li><li><span class="no">11</span><span class="name">전치사</span><span class="pts">장소·위치 전치사 · 방향 전치사 · 시간 전치사</span></li><li><span class="no">12</span><span class="name">접속사</span><span class="pts">등위접속사 and, but, or, so · 시간 접속사 when, before, after · 이유 접속사 because · 조건 접속사 if, unless · 명사절 접속사 that</span></li></ol></div><div class="tabpanel" role="tabpanel" id="toc-panel-2" aria-labelledby="toc-tab-2" hidden><h4 class="toc-vol">단단 문법 중2 상 <span>1~6장</span></h4><ol class="toc"><li><span class="no">01</span><span class="name">문장의 형식 — 5형식</span><span class="pts">5형식 (목적어+목적격보어)</span></li><li><span class="no">02</span><span class="name">시제 — 현재완료</span><span class="pts">현재완료</span></li><li><span class="no">03</span><span class="name">조동사</span><span class="pts">had better, would like to, used to</span></li><li><span class="no">04</span><span class="name">수동태</span><span class="pts">능동태와 수동태 · 조동사가 있는 수동태</span></li><li><span class="no">05</span><span class="name">to부정사</span><span class="pts">to부정사의 명사적 쓰임 (주어·목적어·보어, 의문사+to부정사) · to부정사의 형용사적 쓰임 · to부정사의 부사적 쓰임 · 가주어 it과 가목적어 it · 목적격보어로 쓰이는 to부정사와 원형부정사</span></li><li><span class="no">06</span><span class="name">동명사</span><span class="pts">동명사의 형태와 쓰임 · 동명사와 to부정사 (목적어로 쓰일 때)</span></li></ol><h4 class="toc-vol">단단 문법 중2 하 <span>7~12장</span></h4><ol class="toc"><li><span class="no">07</span><span class="name">분사</span><span class="pts">현재분사와 과거분사 · 감정을 나타내는 분사</span></li><li><span class="no">08</span><span class="name">대명사</span><span class="pts">재귀대명사 · one, some, any · 부정대명사 (another, other, each, every, all, both)</span></li><li><span class="no">09</span><span class="name">형용사·부사·비교</span><span class="pts">형용사와 부사 심화 (fast·hard·late, hardly, enough) · 원급 비교 (as ~ as) · 비교급 · 최상급 · 원급을 이용한 표현</span></li><li><span class="no">10</span><span class="name">문장의 종류</span><span class="pts">부가의문문과 부정의문문</span></li><li><span class="no">11</span><span class="name">접속사와 전치사</span><span class="pts">시간 접속사 as, while, until, as soon as · 이유 접속사 as, since · 양보 접속사 though, although · 상관접속사 (both A and B, not only A but also B 등) · 여러 가지 전치사 (수단·도구·동반 등)</span></li><li><span class="no">12</span><span class="name">관계대명사</span><span class="pts">주격 관계대명사 · 목적격 관계대명사</span></li></ol></div><div class="tabpanel" role="tabpanel" id="toc-panel-3" aria-labelledby="toc-tab-3" hidden><h4 class="toc-vol">단단 문법 중3 상 <span>1~6장</span></h4><ol class="toc"><li><span class="no">01</span><span class="name">완료 시제</span><span class="pts">과거완료 · 현재완료진행형과 과거완료진행형</span></li><li><span class="no">02</span><span class="name">조동사</span><span class="pts">조동사 + have p.p.</span></li><li><span class="no">03</span><span class="name">수동태</span><span class="pts">4형식 문장의 수동태 · 5형식 문장의 수동태 · 구동사의 수동태와 by 이외의 전치사 · 완료형·진행형 수동태</span></li><li><span class="no">04</span><span class="name">to부정사</span><span class="pts">to부정사의 의미상 주어 · to부정사 주요 구문 (too~to, enough to, seem to) · to부정사의 시제 (완료부정사) · to부정사의 수동태</span></li><li><span class="no">05</span><span class="name">동명사</span><span class="pts">동명사의 시제와 수동태</span></li><li><span class="no">06</span><span class="name">분사</span><span class="pts">분사구문 · 분사구문의 수동형과 완료형 · with + 명사 + 분사</span></li></ol><h4 class="toc-vol">단단 문법 중3 하 <span>7~12장</span></h4><ol class="toc"><li><span class="no">07</span><span class="name">비교</span><span class="pts">비교급을 이용한 표현 · 최상급을 이용한 표현</span></li><li><span class="no">08</span><span class="name">접속사</span><span class="pts">결과·목적 접속사 so ~ that, so that · 명사절 접속사 if, whether</span></li><li><span class="no">09</span><span class="name">관계사</span><span class="pts">소유격 관계대명사 whose · 관계대명사 that · 관계대명사 what · 관계대명사의 계속적 용법 · 복합관계대명사 (whoever, whatever 등) · 관계부사 (when, where, why, how) · 복합관계부사 (whenever, wherever, however)</span></li><li><span class="no">10</span><span class="name">가정법</span><span class="pts">가정법 과거 · 가정법 과거완료 · 혼합가정법 · I wish + 가정법, as if + 가정법 · Without(But for) + 가정법, if의 생략</span></li><li><span class="no">11</span><span class="name">일치와 화법</span><span class="pts">수의 일치 · 시제의 일치 · 화법 전환 (직접화법↔간접화법)</span></li><li><span class="no">12</span><span class="name">특수 구문</span><span class="pts">강조와 도치 · 동격과 생략</span></li></ol></div></div>
+</div></section>
+
+<section id="sample"><div class="wrap">
+  <div class="sec-head"><h2>맛보기</h2><p>권마다 한 장을 골라 학생용과 정답·해설을 그대로 공개합니다. 문장 수준과 문제 짜임을 직접 보세요.</p></div>
+  <div class="samples"><div class="sample"><span class="lv">단단 문법 중1 · 7장</span><h3>형용사·부사·비교</h3><p class="pts">형용사의 쓰임과 수량 형용사 · 부사의 형태와 위치 (빈도부사 포함) · 비교급·최상급 만들기 (-er/-est, more/most)</p>
+     <div class="links"><a class="dl big" href="files/%EC%A4%911/07%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%ED%95%99%EC%83%9D%EC%9A%A9.pdf" download="단단 문법 중1 07 형용사부사비교 학생용.pdf">학생용 <span class="size">981KB</span></a><a class="dl big" href="files/%EC%A4%911/07%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EC%A0%95%EB%8B%B5%C2%B7%ED%95%B4%EC%84%A4.pdf" download="단단 문법 중1 07 형용사부사비교 정답·해설.pdf">정답·해설 <span class="size">176KB</span></a></div></div><div class="sample"><span class="lv">단단 문법 중2 · 5장</span><h3>to부정사</h3><p class="pts">to부정사의 명사적 쓰임 (주어·목적어·보어, 의문사+to부정사) · to부정사의 형용사적 쓰임 · to부정사의 부사적 쓰임 · 가주어 it과 가목적어 it · 목적격보어로 쓰이는 to부정사와 원형부정사</p>
+     <div class="links"><a class="dl big" href="files/%EC%A4%912/05%20to%EB%B6%80%EC%A0%95%EC%82%AC/%ED%95%99%EC%83%9D%EC%9A%A9.pdf" download="단단 문법 중2 05 to부정사 학생용.pdf">학생용 <span class="size">1.4MB</span></a><a class="dl big" href="files/%EC%A4%912/05%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%A0%95%EB%8B%B5%C2%B7%ED%95%B4%EC%84%A4.pdf" download="단단 문법 중2 05 to부정사 정답·해설.pdf">정답·해설 <span class="size">222KB</span></a></div></div><div class="sample"><span class="lv">단단 문법 중3 · 4장</span><h3>to부정사</h3><p class="pts">to부정사의 의미상 주어 · to부정사 주요 구문 (too~to, enough to, seem to) · to부정사의 시제 (완료부정사) · to부정사의 수동태</p>
+     <div class="links"><a class="dl big" href="files/%EC%A4%913/04%20to%EB%B6%80%EC%A0%95%EC%82%AC/%ED%95%99%EC%83%9D%EC%9A%A9.pdf" download="단단 문법 중3 04 to부정사 학생용.pdf">학생용 <span class="size">1.1MB</span></a><a class="dl big" href="files/%EC%A4%913/04%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%A0%95%EB%8B%B5%C2%B7%ED%95%B4%EC%84%A4.pdf" download="단단 문법 중3 04 to부정사 정답·해설.pdf">정답·해설 <span class="size">201KB</span></a></div></div>
+  </div>
+</div></section>
+
+<section id="files"><div class="wrap">
+  <div class="sec-head"><h2>자료실</h2><p>수업에 쓰는 강의용 슬라이드(16:9, 전자칠판·온라인 수업)와 워크북, 단어장입니다. 학생용 교재는 종이책으로 보내 드립니다.</p></div>
+  
+  <h3 id="files-1">단단 문법 중1 <span class="note">· 예비중~중1</span></h3>
+  <div class="table-wrap"><table class="files-table">
+    <thead><tr><th>장</th><th>강의용 슬라이드</th><th>워크북</th><th>워크북 정답</th></tr></thead>
+    <tbody><tr><td class="ch"><span class="no">01</span><b>be동사</b></td><td><a class="dl" href="files/%EC%A4%911/01%20be%EB%8F%99%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 01 be동사 강의용.pdf">PDF <span class="size">2.2MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/01%20be%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 01 be동사 워크북.pdf">PDF <span class="size">491KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/01%20be%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 01 be동사 워크북 정답.pdf">PDF <span class="size">226KB</span></a></td></tr><tr><td class="ch"><span class="no">02</span><b>일반동사</b></td><td><a class="dl" href="files/%EC%A4%911/02%20%EC%9D%BC%EB%B0%98%EB%8F%99%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 02 일반동사 강의용.pdf">PDF <span class="size">1.9MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/02%20%EC%9D%BC%EB%B0%98%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 02 일반동사 워크북.pdf">PDF <span class="size">445KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/02%20%EC%9D%BC%EB%B0%98%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 02 일반동사 워크북 정답.pdf">PDF <span class="size">200KB</span></a></td></tr><tr><td class="ch"><span class="no">03</span><b>시제 — 진행형과 미래</b></td><td><a class="dl" href="files/%EC%A4%911/03%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%EC%A7%84%ED%96%89%ED%98%95%EA%B3%BC%20%EB%AF%B8%EB%9E%98/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 03 시제 — 진행형과 미래 강의용.pdf">PDF <span class="size">2.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/03%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%EC%A7%84%ED%96%89%ED%98%95%EA%B3%BC%20%EB%AF%B8%EB%9E%98/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 03 시제 — 진행형과 미래 워크북.pdf">PDF <span class="size">507KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/03%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%EC%A7%84%ED%96%89%ED%98%95%EA%B3%BC%20%EB%AF%B8%EB%9E%98/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 03 시제 — 진행형과 미래 워크북 정답.pdf">PDF <span class="size">243KB</span></a></td></tr><tr><td class="ch"><span class="no">04</span><b>조동사</b></td><td><a class="dl" href="files/%EC%A4%911/04%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 04 조동사 강의용.pdf">PDF <span class="size">1.9MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/04%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 04 조동사 워크북.pdf">PDF <span class="size">434KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/04%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 04 조동사 워크북 정답.pdf">PDF <span class="size">202KB</span></a></td></tr><tr><td class="ch"><span class="no">05</span><b>명사와 관사</b></td><td><a class="dl" href="files/%EC%A4%911/05%20%EB%AA%85%EC%82%AC%EC%99%80%20%EA%B4%80%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 05 명사와 관사 강의용.pdf">PDF <span class="size">1.2MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/05%20%EB%AA%85%EC%82%AC%EC%99%80%20%EA%B4%80%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 05 명사와 관사 워크북.pdf">PDF <span class="size">312KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/05%20%EB%AA%85%EC%82%AC%EC%99%80%20%EA%B4%80%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 05 명사와 관사 워크북 정답.pdf">PDF <span class="size">141KB</span></a></td></tr><tr><td class="ch"><span class="no">06</span><b>대명사</b></td><td><a class="dl" href="files/%EC%A4%911/06%20%EB%8C%80%EB%AA%85%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 06 대명사 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/06%20%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 06 대명사 워크북.pdf">PDF <span class="size">310KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/06%20%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 06 대명사 워크북 정답.pdf">PDF <span class="size">141KB</span></a></td></tr><tr><td class="ch"><span class="no">07</span><b>형용사·부사·비교</b></td><td><a class="dl" href="files/%EC%A4%911/07%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 07 형용사부사비교 강의용.pdf">PDF <span class="size">1.6MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/07%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 07 형용사부사비교 워크북.pdf">PDF <span class="size">388KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/07%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 07 형용사부사비교 워크북 정답.pdf">PDF <span class="size">175KB</span></a></td></tr><tr><td class="ch"><span class="no">08</span><b>문장의 종류</b></td><td><a class="dl" href="files/%EC%A4%911/08%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 08 문장의 종류 강의용.pdf">PDF <span class="size">1.6MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/08%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 08 문장의 종류 워크북.pdf">PDF <span class="size">378KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/08%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 08 문장의 종류 워크북 정답.pdf">PDF <span class="size">179KB</span></a></td></tr><tr><td class="ch"><span class="no">09</span><b>문장의 형식</b></td><td><a class="dl" href="files/%EC%A4%911/09%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 09 문장의 형식 강의용.pdf">PDF <span class="size">2.0MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/09%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 09 문장의 형식 워크북.pdf">PDF <span class="size">449KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/09%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 09 문장의 형식 워크북 정답.pdf">PDF <span class="size">207KB</span></a></td></tr><tr><td class="ch"><span class="no">10</span><b>to부정사와 동명사 기초</b></td><td><a class="dl" href="files/%EC%A4%911/10%20to%EB%B6%80%EC%A0%95%EC%82%AC%EC%99%80%20%EB%8F%99%EB%AA%85%EC%82%AC%20%EA%B8%B0%EC%B4%88/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 10 to부정사와 동명사 기초 강의용.pdf">PDF <span class="size">1.4MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/10%20to%EB%B6%80%EC%A0%95%EC%82%AC%EC%99%80%20%EB%8F%99%EB%AA%85%EC%82%AC%20%EA%B8%B0%EC%B4%88/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 10 to부정사와 동명사 기초 워크북.pdf">PDF <span class="size">330KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/10%20to%EB%B6%80%EC%A0%95%EC%82%AC%EC%99%80%20%EB%8F%99%EB%AA%85%EC%82%AC%20%EA%B8%B0%EC%B4%88/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 10 to부정사와 동명사 기초 워크북 정답.pdf">PDF <span class="size">149KB</span></a></td></tr><tr><td class="ch"><span class="no">11</span><b>전치사</b></td><td><a class="dl" href="files/%EC%A4%911/11%20%EC%A0%84%EC%B9%98%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 11 전치사 강의용.pdf">PDF <span class="size">1.6MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/11%20%EC%A0%84%EC%B9%98%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 11 전치사 워크북.pdf">PDF <span class="size">371KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/11%20%EC%A0%84%EC%B9%98%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 11 전치사 워크북 정답.pdf">PDF <span class="size">176KB</span></a></td></tr><tr><td class="ch"><span class="no">12</span><b>접속사</b></td><td><a class="dl" href="files/%EC%A4%911/12%20%EC%A0%91%EC%86%8D%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중1 12 접속사 강의용.pdf">PDF <span class="size">2.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%911/12%20%EC%A0%91%EC%86%8D%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 12 접속사 워크북.pdf">PDF <span class="size">512KB</span></a></td><td><a class="dl" href="files/%EC%A4%911/12%20%EC%A0%91%EC%86%8D%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 12 접속사 워크북 정답.pdf">PDF <span class="size">238KB</span></a></td></tr></tbody>
+  </table></div>
+  <div class="book-files"><span class="lbl">권 자료</span><span class="item">상 워크북 <a class="dl" href="files/%EC%A4%911/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 상 워크북.pdf">PDF <span class="size">2.3MB</span></a></span><span class="item">상 워크북 정답 <a class="dl" href="files/%EC%A4%911/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 상 워크북 정답.pdf">PDF <span class="size">1.1MB</span></a></span><span class="item">하 워크북 <a class="dl" href="files/%EC%A4%911/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중1 하 워크북.pdf">PDF <span class="size">2.2MB</span></a></span><span class="item">하 워크북 정답 <a class="dl" href="files/%EC%A4%911/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중1 하 워크북 정답.pdf">PDF <span class="size">1.0MB</span></a></span><span class="item">부록 <a class="dl" href="files/%EC%A4%911/%EB%B6%80%EB%A1%9D.pdf" download="단단 문법 중1 부록.pdf">PDF <span class="size">685KB</span></a></span></div>
+  <h3 id="files-2">단단 문법 중2 <span class="note">· 중2</span></h3>
+  <div class="table-wrap"><table class="files-table">
+    <thead><tr><th>장</th><th>강의용 슬라이드</th><th>워크북</th><th>워크북 정답</th></tr></thead>
+    <tbody><tr><td class="ch"><span class="no">01</span><b>문장의 형식 — 5형식</b></td><td><a class="dl" href="files/%EC%A4%912/01%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D%20%E2%80%94%205%ED%98%95%EC%8B%9D/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 01 문장의 형식 — 5형식 강의용.pdf">PDF <span class="size">958KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/01%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D%20%E2%80%94%205%ED%98%95%EC%8B%9D/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 01 문장의 형식 — 5형식 워크북.pdf">PDF <span class="size">249KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/01%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%ED%98%95%EC%8B%9D%20%E2%80%94%205%ED%98%95%EC%8B%9D/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 01 문장의 형식 — 5형식 워크북 정답.pdf">PDF <span class="size">114KB</span></a></td></tr><tr><td class="ch"><span class="no">02</span><b>시제 — 현재완료</b></td><td><a class="dl" href="files/%EC%A4%912/02%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%ED%98%84%EC%9E%AC%EC%99%84%EB%A3%8C/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 02 시제 — 현재완료 강의용.pdf">PDF <span class="size">946KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/02%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%ED%98%84%EC%9E%AC%EC%99%84%EB%A3%8C/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 02 시제 — 현재완료 워크북.pdf">PDF <span class="size">247KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/02%20%EC%8B%9C%EC%A0%9C%20%E2%80%94%20%ED%98%84%EC%9E%AC%EC%99%84%EB%A3%8C/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 02 시제 — 현재완료 워크북 정답.pdf">PDF <span class="size">117KB</span></a></td></tr><tr><td class="ch"><span class="no">03</span><b>조동사</b></td><td><a class="dl" href="files/%EC%A4%912/03%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 03 조동사 강의용.pdf">PDF <span class="size">945KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/03%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 03 조동사 워크북.pdf">PDF <span class="size">244KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/03%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 03 조동사 워크북 정답.pdf">PDF <span class="size">113KB</span></a></td></tr><tr><td class="ch"><span class="no">04</span><b>수동태</b></td><td><a class="dl" href="files/%EC%A4%912/04%20%EC%88%98%EB%8F%99%ED%83%9C/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 04 수동태 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/04%20%EC%88%98%EB%8F%99%ED%83%9C/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 04 수동태 워크북.pdf">PDF <span class="size">310KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/04%20%EC%88%98%EB%8F%99%ED%83%9C/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 04 수동태 워크북 정답.pdf">PDF <span class="size">146KB</span></a></td></tr><tr><td class="ch"><span class="no">05</span><b>to부정사</b></td><td><a class="dl" href="files/%EC%A4%912/05%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 05 to부정사 강의용.pdf">PDF <span class="size">2.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/05%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 05 to부정사 워크북.pdf">PDF <span class="size">516KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/05%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 05 to부정사 워크북 정답.pdf">PDF <span class="size">231KB</span></a></td></tr><tr><td class="ch"><span class="no">06</span><b>동명사</b></td><td><a class="dl" href="files/%EC%A4%912/06%20%EB%8F%99%EB%AA%85%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 06 동명사 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/06%20%EB%8F%99%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 06 동명사 워크북.pdf">PDF <span class="size">323KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/06%20%EB%8F%99%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 06 동명사 워크북 정답.pdf">PDF <span class="size">140KB</span></a></td></tr><tr><td class="ch"><span class="no">07</span><b>분사</b></td><td><a class="dl" href="files/%EC%A4%912/07%20%EB%B6%84%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 07 분사 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/07%20%EB%B6%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 07 분사 워크북.pdf">PDF <span class="size">314KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/07%20%EB%B6%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 07 분사 워크북 정답.pdf">PDF <span class="size">155KB</span></a></td></tr><tr><td class="ch"><span class="no">08</span><b>대명사</b></td><td><a class="dl" href="files/%EC%A4%912/08%20%EB%8C%80%EB%AA%85%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 08 대명사 강의용.pdf">PDF <span class="size">1.7MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/08%20%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 08 대명사 워크북.pdf">PDF <span class="size">384KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/08%20%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 08 대명사 워크북 정답.pdf">PDF <span class="size">178KB</span></a></td></tr><tr><td class="ch"><span class="no">09</span><b>형용사·부사·비교</b></td><td><a class="dl" href="files/%EC%A4%912/09%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 09 형용사부사비교 강의용.pdf">PDF <span class="size">2.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/09%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 09 형용사부사비교 워크북.pdf">PDF <span class="size">517KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/09%20%ED%98%95%EC%9A%A9%EC%82%AC%EB%B6%80%EC%82%AC%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 09 형용사부사비교 워크북 정답.pdf">PDF <span class="size">239KB</span></a></td></tr><tr><td class="ch"><span class="no">10</span><b>문장의 종류</b></td><td><a class="dl" href="files/%EC%A4%912/10%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 10 문장의 종류 강의용.pdf">PDF <span class="size">926KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/10%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 10 문장의 종류 워크북.pdf">PDF <span class="size">235KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/10%20%EB%AC%B8%EC%9E%A5%EC%9D%98%20%EC%A2%85%EB%A5%98/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 10 문장의 종류 워크북 정답.pdf">PDF <span class="size">108KB</span></a></td></tr><tr><td class="ch"><span class="no">11</span><b>접속사와 전치사</b></td><td><a class="dl" href="files/%EC%A4%912/11%20%EC%A0%91%EC%86%8D%EC%82%AC%EC%99%80%20%EC%A0%84%EC%B9%98%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 11 접속사와 전치사 강의용.pdf">PDF <span class="size">2.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/11%20%EC%A0%91%EC%86%8D%EC%82%AC%EC%99%80%20%EC%A0%84%EC%B9%98%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 11 접속사와 전치사 워크북.pdf">PDF <span class="size">522KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/11%20%EC%A0%91%EC%86%8D%EC%82%AC%EC%99%80%20%EC%A0%84%EC%B9%98%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 11 접속사와 전치사 워크북 정답.pdf">PDF <span class="size">243KB</span></a></td></tr><tr><td class="ch"><span class="no">12</span><b>관계대명사</b></td><td><a class="dl" href="files/%EC%A4%912/12%20%EA%B4%80%EA%B3%84%EB%8C%80%EB%AA%85%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중2 12 관계대명사 강의용.pdf">PDF <span class="size">1.2MB</span></a></td><td><a class="dl" href="files/%EC%A4%912/12%20%EA%B4%80%EA%B3%84%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 12 관계대명사 워크북.pdf">PDF <span class="size">314KB</span></a></td><td><a class="dl" href="files/%EC%A4%912/12%20%EA%B4%80%EA%B3%84%EB%8C%80%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 12 관계대명사 워크북 정답.pdf">PDF <span class="size">138KB</span></a></td></tr></tbody>
+  </table></div>
+  <div class="book-files"><span class="lbl">권 자료</span><span class="item">상 워크북 <a class="dl" href="files/%EC%A4%912/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 상 워크북.pdf">PDF <span class="size">1.7MB</span></a></span><span class="item">상 워크북 정답 <a class="dl" href="files/%EC%A4%912/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 상 워크북 정답.pdf">PDF <span class="size">808KB</span></a></span><span class="item">하 워크북 <a class="dl" href="files/%EC%A4%912/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중2 하 워크북.pdf">PDF <span class="size">2.1MB</span></a></span><span class="item">하 워크북 정답 <a class="dl" href="files/%EC%A4%912/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중2 하 워크북 정답.pdf">PDF <span class="size">1007KB</span></a></span><span class="item">부록 <a class="dl" href="files/%EC%A4%912/%EB%B6%80%EB%A1%9D.pdf" download="단단 문법 중2 부록.pdf">PDF <span class="size">597KB</span></a></span></div>
+  <h3 id="files-3">단단 문법 중3 <span class="note">· 중3</span></h3>
+  <div class="table-wrap"><table class="files-table">
+    <thead><tr><th>장</th><th>강의용 슬라이드</th><th>워크북</th><th>워크북 정답</th></tr></thead>
+    <tbody><tr><td class="ch"><span class="no">01</span><b>완료 시제</b></td><td><a class="dl" href="files/%EC%A4%913/01%20%EC%99%84%EB%A3%8C%20%EC%8B%9C%EC%A0%9C/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 01 완료 시제 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/01%20%EC%99%84%EB%A3%8C%20%EC%8B%9C%EC%A0%9C/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 01 완료 시제 워크북.pdf">PDF <span class="size">321KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/01%20%EC%99%84%EB%A3%8C%20%EC%8B%9C%EC%A0%9C/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 01 완료 시제 워크북 정답.pdf">PDF <span class="size">154KB</span></a></td></tr><tr><td class="ch"><span class="no">02</span><b>조동사</b></td><td><a class="dl" href="files/%EC%A4%913/02%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 02 조동사 강의용.pdf">PDF <span class="size">982KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/02%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 02 조동사 워크북.pdf">PDF <span class="size">250KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/02%20%EC%A1%B0%EB%8F%99%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 02 조동사 워크북 정답.pdf">PDF <span class="size">111KB</span></a></td></tr><tr><td class="ch"><span class="no">03</span><b>수동태</b></td><td><a class="dl" href="files/%EC%A4%913/03%20%EC%88%98%EB%8F%99%ED%83%9C/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 03 수동태 강의용.pdf">PDF <span class="size">2.0MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/03%20%EC%88%98%EB%8F%99%ED%83%9C/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 03 수동태 워크북.pdf">PDF <span class="size">448KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/03%20%EC%88%98%EB%8F%99%ED%83%9C/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 03 수동태 워크북 정답.pdf">PDF <span class="size">206KB</span></a></td></tr><tr><td class="ch"><span class="no">04</span><b>to부정사</b></td><td><a class="dl" href="files/%EC%A4%913/04%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 04 to부정사 강의용.pdf">PDF <span class="size">2.0MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/04%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 04 to부정사 워크북.pdf">PDF <span class="size">454KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/04%20to%EB%B6%80%EC%A0%95%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 04 to부정사 워크북 정답.pdf">PDF <span class="size">207KB</span></a></td></tr><tr><td class="ch"><span class="no">05</span><b>동명사</b></td><td><a class="dl" href="files/%EC%A4%913/05%20%EB%8F%99%EB%AA%85%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 05 동명사 강의용.pdf">PDF <span class="size">1021KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/05%20%EB%8F%99%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 05 동명사 워크북.pdf">PDF <span class="size">252KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/05%20%EB%8F%99%EB%AA%85%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 05 동명사 워크북 정답.pdf">PDF <span class="size">120KB</span></a></td></tr><tr><td class="ch"><span class="no">06</span><b>분사</b></td><td><a class="dl" href="files/%EC%A4%913/06%20%EB%B6%84%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 06 분사 강의용.pdf">PDF <span class="size">1.7MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/06%20%EB%B6%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 06 분사 워크북.pdf">PDF <span class="size">390KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/06%20%EB%B6%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 06 분사 워크북 정답.pdf">PDF <span class="size">186KB</span></a></td></tr><tr><td class="ch"><span class="no">07</span><b>비교</b></td><td><a class="dl" href="files/%EC%A4%913/07%20%EB%B9%84%EA%B5%90/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 07 비교 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/07%20%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 07 비교 워크북.pdf">PDF <span class="size">312KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/07%20%EB%B9%84%EA%B5%90/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 07 비교 워크북 정답.pdf">PDF <span class="size">138KB</span></a></td></tr><tr><td class="ch"><span class="no">08</span><b>접속사</b></td><td><a class="dl" href="files/%EC%A4%913/08%20%EC%A0%91%EC%86%8D%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 08 접속사 강의용.pdf">PDF <span class="size">1.2MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/08%20%EC%A0%91%EC%86%8D%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 08 접속사 워크북.pdf">PDF <span class="size">322KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/08%20%EC%A0%91%EC%86%8D%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 08 접속사 워크북 정답.pdf">PDF <span class="size">141KB</span></a></td></tr><tr><td class="ch"><span class="no">09</span><b>관계사</b></td><td><a class="dl" href="files/%EC%A4%913/09%20%EA%B4%80%EA%B3%84%EC%82%AC/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 09 관계사 강의용.pdf">PDF <span class="size">2.8MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/09%20%EA%B4%80%EA%B3%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 09 관계사 워크북.pdf">PDF <span class="size">645KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/09%20%EA%B4%80%EA%B3%84%EC%82%AC/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 09 관계사 워크북 정답.pdf">PDF <span class="size">298KB</span></a></td></tr><tr><td class="ch"><span class="no">10</span><b>가정법</b></td><td><a class="dl" href="files/%EC%A4%913/10%20%EA%B0%80%EC%A0%95%EB%B2%95/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 10 가정법 강의용.pdf">PDF <span class="size">2.4MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/10%20%EA%B0%80%EC%A0%95%EB%B2%95/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 10 가정법 워크북.pdf">PDF <span class="size">524KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/10%20%EA%B0%80%EC%A0%95%EB%B2%95/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 10 가정법 워크북 정답.pdf">PDF <span class="size">236KB</span></a></td></tr><tr><td class="ch"><span class="no">11</span><b>일치와 화법</b></td><td><a class="dl" href="files/%EC%A4%913/11%20%EC%9D%BC%EC%B9%98%EC%99%80%20%ED%99%94%EB%B2%95/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 11 일치와 화법 강의용.pdf">PDF <span class="size">1.7MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/11%20%EC%9D%BC%EC%B9%98%EC%99%80%20%ED%99%94%EB%B2%95/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 11 일치와 화법 워크북.pdf">PDF <span class="size">378KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/11%20%EC%9D%BC%EC%B9%98%EC%99%80%20%ED%99%94%EB%B2%95/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 11 일치와 화법 워크북 정답.pdf">PDF <span class="size">174KB</span></a></td></tr><tr><td class="ch"><span class="no">12</span><b>특수 구문</b></td><td><a class="dl" href="files/%EC%A4%913/12%20%ED%8A%B9%EC%88%98%20%EA%B5%AC%EB%AC%B8/%EA%B0%95%EC%9D%98%EC%9A%A9.pdf" download="단단 문법 중3 12 특수 구문 강의용.pdf">PDF <span class="size">1.3MB</span></a></td><td><a class="dl" href="files/%EC%A4%913/12%20%ED%8A%B9%EC%88%98%20%EA%B5%AC%EB%AC%B8/%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 12 특수 구문 워크북.pdf">PDF <span class="size">317KB</span></a></td><td><a class="dl" href="files/%EC%A4%913/12%20%ED%8A%B9%EC%88%98%20%EA%B5%AC%EB%AC%B8/%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 12 특수 구문 워크북 정답.pdf">PDF <span class="size">148KB</span></a></td></tr></tbody>
+  </table></div>
+  <div class="book-files"><span class="lbl">권 자료</span><span class="item">상 워크북 <a class="dl" href="files/%EC%A4%913/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 상 워크북.pdf">PDF <span class="size">1.9MB</span></a></span><span class="item">상 워크북 정답 <a class="dl" href="files/%EC%A4%913/%EC%83%81%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 상 워크북 정답.pdf">PDF <span class="size">931KB</span></a></span><span class="item">하 워크북 <a class="dl" href="files/%EC%A4%913/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81.pdf" download="단단 문법 중3 하 워크북.pdf">PDF <span class="size">2.3MB</span></a></span><span class="item">하 워크북 정답 <a class="dl" href="files/%EC%A4%913/%ED%95%98%20%EC%9B%8C%ED%81%AC%EB%B6%81%20%EC%A0%95%EB%8B%B5.pdf" download="단단 문법 중3 하 워크북 정답.pdf">PDF <span class="size">1.1MB</span></a></span><span class="item">부록 <a class="dl" href="files/%EC%A4%913/%EB%B6%80%EB%A1%9D.pdf" download="단단 문법 중3 부록.pdf">PDF <span class="size">649KB</span></a></span></div>
+  <div class="common">
+    <div class="txt"><h3>단어장 엑셀</h3><p class="note">단단 문법 중1·중2·중3 전체 — 장마다 주요 단어·품사·뜻·예문을 시트로 정리했습니다.</p></div>
+    <a class="dl big" href="files/%EB%8B%A8%EC%96%B4/%EB%8B%A8%EB%8B%A8%20%EB%AC%B8%EB%B2%95%20%EB%8B%A8%EC%96%B4%EC%9E%A5.xlsx" download="단단 문법 단어장.xlsx">엑셀 내려받기 <span class="size">81KB</span></a>
+  </div>
+</div></section>
+
+</main>
+<footer><div class="wrap">© 2026 단단 문법</div></footer>
+<script>
+document.querySelectorAll('.tabs').forEach(function(t){
+  var tabs=Array.prototype.slice.call(t.querySelectorAll('[role=tab]'));
+  var panels=Array.prototype.slice.call(t.querySelectorAll('[role=tabpanel]'));
+  function show(i){
+    tabs.forEach(function(b,j){b.setAttribute('aria-selected',i===j?'true':'false');b.tabIndex=i===j?0:-1;});
+    panels.forEach(function(p,j){p.hidden=i!==j;});
+  }
+  tabs.forEach(function(b,i){
+    b.addEventListener('click',function(){show(i);});
+    b.addEventListener('keydown',function(e){
+      if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+      var k=(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length;show(k);tabs[k].focus();
+    });
+  });
+});</script>
+</body>
+</html>
